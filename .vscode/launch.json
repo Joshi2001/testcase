@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Flutter iOS (iPhone 15 Plus)", 
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/lib/main.dart", 
+            "deviceId": "iPhone 15 Plus",
+            "args": []
+          }
+    
+    ]
+}
