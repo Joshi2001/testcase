@@ -30,6 +30,10 @@ class ChatModel {
     rating = json['rating'] != null ? Rating.fromJson(json['rating']) : null;
   }
 
+  get status => null;
+
+  get data => null;
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;

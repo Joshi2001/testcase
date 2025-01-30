@@ -1,10 +1,12 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testcase/data/response/status.dart';
 import 'package:testcase/view/dashboard.dart';
+import 'package:testcase/view/detailScreen.dart';
 import 'package:testcase/view_model/chat_view_model.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,14 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> timeTaken = [
-    "Today - 06:00PM",
-    "Today - 06:00PM",
-    "Yesterday - 06:00PM",
-    "Yesterday - 06:00PM",
-    "20 Sep, 2023 - 06:00PM",
-  ];
-
+  
   ChatViewModel chatViewModel = ChatViewModel();
 
   @override
@@ -29,16 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
     chatViewModel.chatListApi();
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    // ignore: unused_local_variable
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           leading: GestureDetector(
               onTap: () {
-                 Navigator.of(context).pop();
-              }, child: Image.asset('assets/ic_back.png')),
+                Navigator.of(context).pop();
+              },
+              child: Image.asset('assets/ic_back.png')),
           backgroundColor: Colors.white,
           shape: Border(
               bottom: BorderSide(
@@ -46,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 1.0,
           )),
           title: const Text(
-            'Chats',
+            
+            'Home',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           actions: [
@@ -70,33 +71,39 @@ class _HomeScreenState extends State<HomeScreen> {
               case Status.ERROR:
                 return Center(
                   child: Text(
-                    value.chatList.message?.toString() ?? 'Something went wrong.',
+                    value.chatList.message?.toString() ??
+                        'Something went wrong.',
                   ),
                 );
               case Status.COMPLETED:
                 final chatData = value.chatList.data ?? [];
                 if (chatData == "") {
-                  return const Center(child: Text('No chats available.'));
+                  return const Center(child: Text('No Data available.'));
                 }
                 return ListView.builder(
-                    itemCount:5
-                    //  chatData.length
-                     ,
+                    itemCount: chatData.length,
                     itemBuilder: (context, index) {
                       final chat = chatData[index];
                       return GestureDetector(
                         onTap: () {
-                          // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const ChatScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                     DetailScreen(chatModel: chat)));
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const SizedBox(height: 10,),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Row(
                               children: [
-                                const SizedBox(width: 20,),
+                                const SizedBox(
+                                  width: 20,
+                                ),
                                 CircleAvatar(
                                   radius: 23,
+                                   
                                   backgroundImage:
                                       NetworkImage(chat.image.toString()),
                                 ),
@@ -122,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 5,
                                     ),
                                     SizedBox(
-                                      width: 290,
+                                      width: screenWidth * 0.6,
                                       child: Text(
                                         chat.description ?? "".toString(),
                                         maxLines: 1,
@@ -135,26 +142,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 const Spacer(),
-                                const Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 8,
-                                      backgroundColor: Color(0xFF6154D5),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                  ],
-                                ),
                               ],
                             ),
-                            Text(timeTaken[index],
-                                style: const TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                )),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Text(chat.rating?.rate.toString() ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  )),
+                            ),
                             const Divider()
                           ],
                         ),
@@ -162,11 +159,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
 
               case null:
-              return const SizedBox.shrink();
+                return const SizedBox.shrink();
             }
-
           }),
         ));
   }
 }
+
 

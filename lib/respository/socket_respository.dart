@@ -1,55 +1,56 @@
+// ignore_for_file: library_prefixes
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as IO show Socket, io;
 import 'package:testcase/model/socket_model.dart';
 
-class SocketRespository with ChangeNotifier {
-
+class SocketRepository with ChangeNotifier {
   IO.Socket? socket;
-  String baseUrl = '';
+  final String baseUrl = 'http://10.0.2.2:5000'; // Use a single base URL for local development
   final List<Message> _messages = [];
 
-  SocketRespository(BuildContext context) {
-    initsocket(context);
+  SocketRepository(BuildContext context) {
+    initSocket();
   }
 
   List<Message> get messages => _messages;
 
-  void initsocket(BuildContext context) {
-    if (Theme.of(context).platform == TargetPlatform.iOS) {
-      baseUrl = 'http://127.0.0.1:5000';
-    } else if (Theme.of(context).platform == TargetPlatform.android) {
-      baseUrl = 'http://10.0.2.2:5000';
-    } else {
-      baseUrl = 'http://127.0.0.1:5000';
-    }
-
+  void initSocket() {
     socket = IO.io(baseUrl, <String, dynamic>{
-      'transports': ['websocket','polling'],
+      'transports': ['websocket'], // Specify the transport method
       'autoConnect': false,
     });
+
     socket?.on('connect', (_) {
       if (kDebugMode) {
-        print("Connect!");
+        print("Connected to socket!");
       }
     });
-    socket?.on('disconnect', (_) {
+
+    socket?.on('connect_error', (error) {
       if (kDebugMode) {
-        print("Disconnect!");
+        print("Connection error: $error");
       }
     });
+
+    socket?.on('disconnect', (reason) {
+      if (kDebugMode) {
+        print("Disconnected: $reason");
+      }
+    });
+
     socket?.on('error', (error) {
       if (kDebugMode) {
-        print("Connection failed, retrying...");
-        socket?.connect(); 
+        print("Socket error: $error");
       }
     });
 
     socket?.on('message', (data) {
       messageReceived(data);
     });
-     socket?.connect();
-    
+
+    socket?.connect(); // Connect the socket after setting up listeners
   }
 
   void messageReceived(dynamic data) {
@@ -60,32 +61,34 @@ class SocketRespository with ChangeNotifier {
     }
   }
 
- void sendMessage(String text) async {
-  try {
-    if (socket != null && socket!.connected) {
-      var message = Message(text: text, timestamp: DateTime.now());
-      socket?.emit("message", message.toJson());
-      if (kDebugMode) {
-        print("Message sent: $text");
-      }
-    } else {
-      if (kDebugMode) {
-        print("Socket is not connected!");
-      }
-      if (socket != null) {
+  void sendMessage(String text) async {
+    try {
+      if (socket != null && socket!.connected) {
+        var message = Message(text: text, timestamp: DateTime.now());
+        socket?.emit("message", message.toJson());
+        if (kDebugMode) {
+          print("Message sent: $text");
+        }
+      } else {
+        if (kDebugMode) {
+          print("Socket is not connected! Attempting to connect...");
+        }
         socket?.connect();
       }
-    }
-  } catch (e) {
-    if (kDebugMode) {
-      print('Error while sending message: $e');
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error while sending message: $e');
+      }
     }
   }
-}
 
+  @override
+  void dispose() {
+    disposeSocket();
+    super.dispose();
+  }
 
   void disposeSocket() {
     socket?.disconnect();
-    super.dispose();
   }
 }

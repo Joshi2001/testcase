@@ -13,7 +13,7 @@ class NotificationScreen extends StatefulWidget {
 class NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
-    final userPrefernece = Provider.of<UserViewModel>(context);
+    Provider.of<UserViewModel>(context);
     List<String> chatUser = [
       "Fit Bot",
       "Fit Bot2",
