@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:testcase/view/chat.dart';
+import 'package:testcase/view/aibot.dart';
 import 'package:testcase/view/home.dart';
 import 'package:testcase/view/notification.dart';
 import 'package:testcase/view/profile.dart';
@@ -18,7 +18,7 @@ class _Bottomnavigation2State extends State<Bottomnavigation2> {
   List<Widget> screenList = [
     
     const HomeScreen(),
-    const ChatScreen(),
+    const AibotScreen(),
     const ProfileScreen(),
     const NotificationScreen(),
    

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testcase/Custom/show_dialog.dart';
+import 'package:testcase/view/auth/login.dart';
 import 'package:testcase/view_model/user_view_model.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -55,7 +56,9 @@ class NotificationScreenState extends State<NotificationScreen> {
             padding: const EdgeInsets.only(right: 24.0),
             child: GestureDetector(
               onTap: () {
-                showDialog(context: context, builder: (context)=>const LogOutDialog());
+                showDialog(context: context, builder: (context)=>DialogBox(title: "Are you sure you want to log out?",cancelText:"Cancle",okText:"Log Out",dialogColor: const Color(0xFF272256),cancelButtonColor: Colors.white,logoutButtonColor: const Color(0xFF6154D5),borderRadius: 20,padding: 20,fontSize: 16,navigator: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LogIn(),));
+                },));
               },
               child: Image.asset('assets/ic_threedot.png')),
           ),
