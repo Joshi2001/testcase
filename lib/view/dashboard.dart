@@ -1,4 +1,7 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 import 'package:testcase/view/bottomnavigation2.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -24,6 +27,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+     double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
+    double h26 = Mediaquery.getFontSize26(context);
+    double h28 = Mediaquery.getFontSize28(context);
+    double h30 = Mediaquery.getFontSize30(context);
+    double h32 = Mediaquery.getFontSize32(context);
+    double h34 = Mediaquery.getFontSize34(context);
+    double h36 = Mediaquery.getFontSize36(context);
+    double h38 = Mediaquery.getFontSize38(context);
+    double h40 = Mediaquery.getFontSize40(context);
+    double h42 = Mediaquery.getFontSize42(context);
+    double h44 = Mediaquery.getFontSize44(context);
     return Scaffold(
       backgroundColor: const Color(0xFFFDFDFF),
       appBar: AppBar(
@@ -37,9 +60,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           color: Colors.black.withOpacity(0.1),
           width: 1.0,
         )),
-        title: const Text(
+        title:  Text(
           'Dashboard',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: h18, fontWeight: FontWeight.w500),
         ),
         actions: [
           GestureDetector(
@@ -58,21 +81,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
           padding: const EdgeInsets.only(left: 24.0, right: 24.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 20.33,
+               SizedBox(
+                height: screenHeight * 0.02,  
               ),
-              const Row(
+               Row(
                 children: [
-                  SizedBox(
-                      height: 45,
-                      width: 45,
-                      child: CircleAvatar(
+                   SizedBox(
+                      height: screenHeight * 0.05,
+                      width: screenWidth * 0.1,
+                      child: const CircleAvatar(
                         backgroundImage: AssetImage("assets/img_profile.png"),
                       )),
                   SizedBox(
-                    width: 10.0,
+                    width:screenWidth * 0.02,
                   ),
-                  Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
@@ -81,30 +104,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             "Good day,",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w400),
+                                fontSize: h26, fontWeight: FontWeight.w400),
                           ),
-                          Text(
+                           Text(
                             " Susan",
                             style: TextStyle(
-                                fontSize: 25,
+                                fontSize: h26,
                                 fontWeight: FontWeight.w500,
                                 fontStyle: FontStyle.italic),
                           ),
                         ],
                       ),
-                      Text(
+                       Text(
                         "Track your daily activity and stay healthy",
                         style: TextStyle(
-                            color: Color(0xFF6B678B),
-                            fontSize: 13,
+                            color: const Color(0xFF6B678B),
+                            fontSize: h14,
                             fontWeight: FontWeight.w400),
                       ),
                     ],
                   )
                 ],
               ),
-              const SizedBox(
-                height: 30.0,
+               SizedBox(
+                height:screenHeight * 0.02,
               ),
               Container(
                   width: double.infinity,
@@ -115,23 +138,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     padding: const EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 20.0, bottom: 20.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                         Text(
                           "Enhance your health journey by providing more info about your health.",
                           style: TextStyle(
-                              fontSize: 14,
+                              fontSize: h14,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
+                              textAlign: TextAlign.start,
                         ),
-                        const SizedBox(
-                          height: 20.0,
+                         SizedBox(
+                          height: screenHeight * 0.02,
                         ),
                         Row(
                           children: [
-                            const Text(
+                             Text(
                               "Click here to add critical health information.",
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: h12,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white),
                             ),
@@ -145,8 +170,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ],
                     ),
                   )),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,6 +180,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Column(
                     children: [
                       Container(
+                        width: screenWidth * 0.40,
+                        height: screenHeight * 0.2,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -171,29 +198,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               left: 25.0, top: 15, right: 25, bottom: 24),
                           child: Column(
                             children: [
-                              const Text(
-                                "Goals Settings",
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w600),
-                              ),
-                              const SizedBox(
-                                height: 28,
+                               Center(
+                                 child: Text(
+                                  "Goals Settings",
+                                  style: TextStyle(
+                                      fontSize: h14, fontWeight: FontWeight.w600),
+                                                               ),
+                               ),
+                               SizedBox(
+                                height: screenHeight * 0.02,
                               ),
                               Image.asset(
                                 "assets/img_profile.png",
-                                height: 101,
-                                width: 101,
+                                height: screenHeight * 0.1,
+                                width: screenWidth * 0.2,
                               )
                             ],
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height: screenHeight  * 0.02, 
                       ),
                       Row(
                         children: [
                           Container(
+                            width: screenWidth * 0.40,
+                            height: screenHeight * 0.2,
                             decoration: const BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -212,154 +243,159 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   padding: const EdgeInsets.only(
                                       left: 25.0, top: 15, right: 25, bottom: 24),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Text(
+                                       Text(
                                         "Food Pref.",
                                         style: TextStyle(
-                                            fontSize: 14,
+                                            fontSize: h14,
                                             fontWeight: FontWeight.w600),
                                       ),
-                                      const SizedBox(
-                                        width: 17,
+                                       SizedBox(
+                                        width: screenWidth * 0.01,
                                       ),
-                                      Image.asset("assets/ic_food.png")
+                                      Image.asset("assets/ic_food.png",height: screenHeight*0.05,width: screenWidth*0.1,)
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0,left: 10,right: 10),
-                                  child: Row(
-                                    children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+                                  children: [
+                                    Container(
+                                      height: screenHeight * 0.03,
+                                      width: screenWidth * 0.15, 
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFEFEEFB),
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(5)),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                             SizedBox(
+                                              width:screenWidth*0.01),
+                                          Image.asset(
+                                            "assets/ic_fruit.png",color: const Color(0xFF6154D5),
+                                           height: screenHeight*0.014,
+                                           width: screenWidth*0.05,
+                                          ),
+                                           SizedBox(
+                                              width:screenWidth*0.01),
+                                           Text(
+                                            "Fruit",
+                                            style: TextStyle(
+                                              fontSize: h10,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                     SizedBox(width:screenWidth * 0.01),
+                                     Container(
+                                       height: screenHeight * 0.03,
+                                      width: screenWidth * 0.15, 
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFEFEEFB),
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(5)),
+                                      ),
+                                      child: Row(
+                                         mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                              width:screenWidth*0.01),
+                                          Image.asset(
+                                            "assets/ic_veg.png",color: const Color(0xFF6154D5),
+                                          height: screenHeight*0.014,
+                                           width: screenWidth*0.03,
+                                          ),
+                                           SizedBox(
+                                              width:screenWidth*0.01),
+                                           Text(
+                                            "Veggies",
+                                            style: TextStyle(
+                                              fontSize: h10,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight * 0.01),
+                                 Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                   children: [
+                                     Container(
+                                      height: screenHeight * 0.03,
+                                      width: screenWidth * 0.15, 
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFEFEEFB),
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(5)),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                           SizedBox(
+                                              width:screenWidth*0.01),
+                                          Image.asset(
+                                            "assets/ic_dairy.png",color: const Color(0xFF6154D5),
+                                            height: screenHeight*0.014,
+                                           width: screenWidth*0.03,
+                                          ),
+                                          SizedBox(
+                                              width:screenWidth*0.01),
+                                           Text(
+                                            "Dairy",
+                                            style: TextStyle(
+                                              fontSize: h10,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          
+                                        ],
+                                      ),
+                                     ),
+                                      SizedBox(width: screenWidth * 0.01),
                                       Container(
-                                        height: 18,
-                                        width: 62.5,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFEFEEFB),
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(5)),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              "assets/ic_fruit.png",color: const Color(0xFF6154D5),
-                                             height: 16,
-                                             width: 14,
-                                            ),
-                                            const SizedBox(
-                                                width:
-                                                    5),
-                                            const Text(
-                                              "Fruit",
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                     height: screenHeight * 0.03,
+                                      width: screenWidth * 0.15, 
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFEFEEFB),
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(5)),
                                       ),
-                                      const SizedBox(width: 10),
-                                       Container(
-                                        height: 18,
-                                        width: 62.5,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFEFEEFB),
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(5)),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              "assets/ic_veg.png",color: const Color(0xFF6154D5),
-                                             height: 16,
-                                             width: 14,
+                                      child: Row(
+                                         mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                           SizedBox(
+                                              width:screenWidth*0.01),
+                                          Image.asset(
+                                             "assets/ic_fruit.png",color: const Color(0xFF6154D5),
+                                           height: screenHeight*0.014,
+                                           width: screenWidth*0.03,
+                                          ),
+                                           SizedBox(
+                                              width:screenWidth*0.01),
+                                           Text(
+                                            "Fruit",
+                                            style: TextStyle(
+                                              fontSize: h10,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500,
                                             ),
-                                            const SizedBox(
-                                                width:
-                                                    5),
-                                            const Text(
-                                              "Veggies",
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: 10),
-                                    ],
-                                  ),
-                                ),
-                                 Padding(
-                                   padding: const EdgeInsets.only(bottom: 24.0,left: 10,right: 10),
-                                   child: Row(
-                                     children: [
-                                       Container(
-                                        height: 18,
-                                        width: 62.5,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFEFEEFB),
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(5)),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              "assets/ic_dairy.png",color: const Color(0xFF6154D5),
-                                             height: 16,
-                                             width: 14,
-                                            ),
-                                            const SizedBox(
-                                                width:
-                                                    5),
-                                            const Text(
-                                              "Dairy",
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            
-                                          ],
-                                        ),
-                                       ),
-                                       const SizedBox(width: 10),
-                                        Container(
-                                        height: 18,
-                                        width: 62.5,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFEFEEFB),
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(5)),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                               "assets/ic_fruit.png",color: const Color(0xFF6154D5),
-                                             height: 16,
-                                             width: 14,
-                                            ),
-                                            const SizedBox(
-                                                width:
-                                                    5),
-                                            const Text(
-                                              "Fruit",
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                     ],
-                                   ),
+                                    ),
+                                   ],
                                  )
                               ],
                             ),
@@ -367,10 +403,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                          
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height: screenHeight * 0.02,
                       ),
                       Container(
+                        width: screenWidth * 0.40,
+                        height: screenHeight * 0.15,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -389,44 +427,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               padding: const EdgeInsets.only(
                                   left: 25.0, top: 15, right: 25, bottom: 24),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                   Text(
                                     "Qureies",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: h14,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(
-                                    width: 47,
+                                   SizedBox(
+                                    width: screenWidth * 0.034,
                                   ),
                                   Image.asset("assets/ic_query.png")
                                 ],
                               ),
                             ),
-                            const Padding(
-                              padding:
-                                  EdgeInsets.only(left: 24.0, bottom: 25.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "5/5",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
+                            SizedBox(
+                              height: screenHeight * 0.01,),
+                             Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Text(
+                                   "5/5",
+                                   style: TextStyle(
+                                       fontSize: h16,
+                                       fontWeight: FontWeight.w600),
+                                 ),
                                   SizedBox(
-                                    width: 5,
-                                  ),
+                                   width: screenWidth * 0.01,
+                                 ),
                                   Text(
-                                    "Queries left",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400),
-                                  )
-                                ],
-                              ),
-                            ),
+                                   "Queries left",
+                                   style: TextStyle(
+                                       fontSize: h14,
+                                       fontWeight: FontWeight.w400),
+                                 )
+                               ],
+                             ),
                           ],
                         ),
                       ),
@@ -437,6 +474,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Column(
                     children: [
                       Container(
+                         width: screenWidth * 0.40,
+                        height: screenHeight * 0.15,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -455,51 +494,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               padding: const EdgeInsets.only(
                                   left: 25.0, top: 15, right: 25, bottom: 24),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                   Text(
                                     "Weight",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: h14,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(
-                                    width: 47,
+                                   SizedBox(
+                                    width: screenWidth * 0.1,
                                   ),
                                   Image.asset("assets/ic_weight.png")
                                 ],
                               ),
                             ),
-                            const Padding(
-                              padding:
-                                  EdgeInsets.only(left: 24.0, bottom: 25.0),
-                              child: Row(
-                                children: [
+                             Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Text(
+                                   "75",
+                                   style: TextStyle(
+                                       fontSize: h16,
+                                       fontWeight: FontWeight.w600),
+                                 ),
+                                 SizedBox(
+                                   width: screenWidth * 0.01,
+                                 ),
                                   Text(
-                                    "75",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "KG",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400),
-                                  )
-                                ],
-                              ),
-                            ),
+                                   "KG",
+                                   style: TextStyle(
+                                       fontSize: h14,
+                                       fontWeight: FontWeight.w400),
+                                 )
+                               ],
+                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height: screenHeight * 0.02,
                       ),
                       Container(
+                        width: screenWidth * 0.40,
+                        height: screenHeight * 0.15,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -518,51 +556,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               padding: const EdgeInsets.only(
                                   left: 25.0, top: 15, right: 25, bottom: 24),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                   Text(
                                     "Height",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: h14,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(
-                                    width: 47,
+                                   SizedBox(
+                                    width: screenWidth * 0.1,
                                   ),
                                   Image.asset("assets/ic_line.png")
                                 ],
                               ),
                             ),
-                            const Padding(
-                              padding:
-                                  EdgeInsets.only(left: 24.0, bottom: 25.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "175",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "CM",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400),
-                                  )
-                                ],
-                              ),
+                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                 Text(
+                                  "175",
+                                  style: TextStyle(
+                                      fontSize:h16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                SizedBox(
+                                  width: screenWidth * 0.01,
+                                ),
+                                 Text(
+                                  "CM",
+                                  style: TextStyle(
+                                      fontSize: h14,
+                                      fontWeight: FontWeight.w400),
+                                )
+                              ],
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height: screenHeight * 0.02,
                       ),
                       Container(
+                         width: screenWidth * 0.40,
+                        height: screenHeight * 0.25,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -575,23 +612,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, top: 15, right: 25, bottom: 24),
+                              padding: const EdgeInsets.only( left: 25.0, top: 15, right: 25, bottom: 24),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  
+                                   Text(
                                     "Sleep Cycle",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: h14,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                  const SizedBox(
-                                    width: 16,
-                                  ),
+                                    SizedBox(
+                                      width: screenWidth * 0.032,
+                                    ),  
                                   Image.asset("assets/ic_moon.png")
                                 ],
                               ),
@@ -600,18 +638,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 padding: const EdgeInsets.only(
                                     left: 24.0, bottom: 25.0),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
                                       "assets/ic_earlygroup.png",
-                                      width: 75,
-                                      height: 74,
+                                      width: screenWidth * 0.2,
+                                      height: screenHeight * 0.1,
                                     ),
-                                    const SizedBox(height: 22,),
-                                    const Text(
+                                      SizedBox(height: screenHeight * 0.01),
+                                     Text(
                                       "Early Riser",
                                       style: TextStyle(
-                                          color: Color(0xFF6B678B),
-                                          fontSize: 18,
+                                          color: const Color(0xFF6B678B),
+                                          fontSize: h18,
                                           fontWeight: FontWeight.w600),
                                     )
                                   ],

@@ -1,7 +1,8 @@
-// ignore_for_file: unrelated_type_equality_checks, deprecated_member_use
+// ignore_for_file: unrelated_type_equality_checks, deprecated_member_use, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 import 'package:testcase/data/response/status.dart';
 import 'package:testcase/view/dashboard.dart';
 import 'package:testcase/view/detailScreen.dart';
@@ -28,9 +29,30 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    // ignore: unused_local_variable
-    double screenHeight = MediaQuery.of(context).size.height;
+
+    double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+   double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
+    double h26 = Mediaquery.getFontSize26(context);
+    double h28 = Mediaquery.getFontSize28(context);
+    double h30 = Mediaquery.getFontSize30(context);
+    double h32 = Mediaquery.getFontSize32(context);
+    double h34 = Mediaquery.getFontSize34(context);
+    double h36 = Mediaquery.getFontSize36(context);
+    double h38 = Mediaquery.getFontSize38(context);
+    double h40 = Mediaquery.getFontSize40(context);
+    double h42 = Mediaquery.getFontSize42(context);
+    double h44 = Mediaquery.getFontSize44(context);
+    double IW40 = Mediaquery.getImageSizeW40(context);
+    double IH40 = Mediaquery.getImageSizeH40(context);
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -45,10 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.black.withOpacity(0.1),
             width: 1.0,
           )),
-          title: const Text(
-            
+          title:  Text(
             'Home',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: h18, fontWeight: FontWeight.w500),
           ),
           actions: [
             Padding(
@@ -58,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const DashboardScreen()));
                   },
-                  child: Image.asset('assets/ic_chatmessage.png')),
+                  child: Image.asset('assets/ic_chatmessage.png',width: IW40,height: IH40,)),
             ),
           ],
         ),
@@ -93,22 +114,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: screenHeight*0.002,
                             ),
                             Row(
                               children: [
-                                const SizedBox(
-                                  width: 20,
+                                 SizedBox(
+                                  width: screenWidth*0.025,
                                 ),
                                 CircleAvatar(
                                   radius: 23,
-                                   
                                   backgroundImage:
                                       NetworkImage(chat.image.toString()),
                                 ),
-                                const SizedBox(
-                                  width: 10,
+                                 SizedBox(
+                                  width: screenWidth*0.025,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -117,10 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       child: Text(
                                         chat.category ?? "".toString(),
-                                        style: const TextStyle(
-                                          fontSize: 14,
+                                        style: TextStyle(
+                                          fontSize: h14,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xFF0A0816),
+                                          color: const Color(0xFF0A0816),
                                         ),
                                         maxLines: 2,
                                       ),
@@ -133,10 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: Text(
                                         chat.description ?? "".toString(),
                                         maxLines: 1,
-                                        style: const TextStyle(
-                                            fontSize: 14,
+                                        style:  TextStyle(
+                                            fontSize: h14,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xFF6B678B)),
+                                            color: const Color(0xFF6B678B)),
                                       ),
                                     )
                                   ],
@@ -147,12 +167,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Text(chat.rating?.rate.toString() ?? "",
-                                  style: const TextStyle(
-                                    fontSize: 12,
+                                  style:  TextStyle(
+                                    fontSize: h12,
                                     fontWeight: FontWeight.w500,
                                   )),
                             ),
-                            const Divider()
+                            const Divider(),
+                            SizedBox(
+                              height: screenHeight*0.002,
+                            ),
+                            
                           ],
                         ),
                       );

@@ -1,8 +1,11 @@
 
+// ignore_for_file: unused_local_variable
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:testcase/Custom/customtextfield.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,9 +19,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   File? selectedImg;
   String? selectedValue;
   String? selectedOccu;
+  String? selectedChronic;
   String? selectedAge;
+  String? selectedMedications;
   String? selectedTobacco;
-  List<String> yesNo = ["Yes", "No"];
+  String? selectedAlocohol;
+  List<String> tobacco = ["Yes", "No"];
+  List<String> alcohol = ["Yes", "No"];
 
   List<String> occupation = [
     'Software Developer',
@@ -26,13 +33,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'Teacher',
     'Engineer',
     'Nurse',
-    'Artist',
-    'Photographer',
-    'Graphic Designer',
-    'Chef',
-    'Scientist',
-    'Lawyer',
   ];
+  List<String>medications=[
+    'Yes',
+    'No'
+  ];
+List<String> chronicIllness = [
+    'Diabetes',
+    'Hypertension',
+    'Asthma',
+    'Cancer',
+    'Heart Disease',
+  ];  
 
   List<String> listItem = [
     "Cycling",
@@ -64,20 +76,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
     "18",
     "19",
     "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-    "26",
-    "27",
-    "28",
-    "29",
-    "30"
   ];
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
+    double h26 = Mediaquery.getFontSize26(context);
+    double h28 = Mediaquery.getFontSize28(context);
+    double h30 = Mediaquery.getFontSize30(context);
+    double h32 = Mediaquery.getFontSize32(context);
+    double h34 = Mediaquery.getFontSize34(context);
+    double h36 = Mediaquery.getFontSize36(context);
+    double h38 = Mediaquery.getFontSize38(context);
+    double h40 = Mediaquery.getFontSize40(context);
+    double h42 = Mediaquery.getFontSize42(context);
+    double h44 = Mediaquery.getFontSize44(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -91,9 +113,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.black.withOpacity(0.1),
           width: 1.0,
         )),
-        title: const Text(
+        title:  Text(
           'Profile',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: h18, fontWeight: FontWeight.w500),
         ),
         actions: [
           Padding(
@@ -103,13 +125,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Color(0xFF6154D5),
                 borderRadius: BorderRadius.all(Radius.circular(13)),
               ),
-              child: const Padding(
-                padding: EdgeInsets.only(
+              child:  Padding(
+                padding: const EdgeInsets.only(
                     left: 14.0, right: 14, top: 5.5, bottom: 5.5),
                 child: Text(
                   "Save",
                   style: TextStyle(
-                      fontSize: 14,
+                      fontSize: h14,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -124,8 +146,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
+               SizedBox(
+                height:screenHeight * 0.03,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -140,10 +162,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Personal info",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
                           color: Colors.black),
                     ),
@@ -165,28 +187,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.02, 
               ),
-              const Text(
+               Text(
                   'You can update your profile photo and personal details here',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: h14,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF6B678B),
+                    color: const Color(0xFF6B678B),
                   )),
-              const SizedBox(
-                height: 30,
+               SizedBox(
+                height: screenHeight * 0.03,
               ),
               Center(
                 child: Container(
-                  height: 156,
-                  width: 156,
+                  height: 150,
+                  width: 150,
                   decoration: const BoxDecoration(),
                   child: Stack(
                     children: [
                       CircleAvatar(
-                        radius: 78,
+                        radius: 87,
                         backgroundImage: selectedImg != null
                             ? FileImage(selectedImg!)
                             : const AssetImage("assets/img_profile.png")
@@ -197,8 +219,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         left: 0,
                         right: 0,
                         child: SizedBox(
-                          height: 31,
-                          width: 31,
+                          height: 30,  
+                          width: screenWidth * 0,
                           child: GestureDetector(
                               onTap: () {
                                 pickerImageGallery();
@@ -210,23 +232,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 30,
+               SizedBox(
+                height: screenHeight * 0.03,
               ),
-              const Text(
+               Text(
                 "Full Name",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Hoehn Doe",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -237,15 +259,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Age",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -260,12 +282,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Age",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: h16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFFACACAF),
+                        color: const Color(0xFFACACAF),
                       ),
                     ),
                     icon: Image.asset('assets/Shape.png'),
@@ -285,15 +307,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.025,
               ),
-              const Text(
+               Text(
                 "Occupation",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -308,12 +330,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Occupation",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: h16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFFACACAF),
+                        color: const Color(0xFFACACAF),
                       ),
                     ),
                     icon: Image.asset('assets/Shape.png'),
@@ -334,23 +356,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.025,
               ),
-              const Text(
+               Text(
                 "Changes Passwords",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
               const SizedBox(
                 height: 8,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Old Password",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -361,16 +383,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height:screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "New  Password",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -381,16 +403,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Confirm  Password",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -401,8 +423,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height:screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -417,12 +439,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Additional Health Information",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -442,22 +464,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "You can update your profile photo and personal details here",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Chronic illnesses",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -472,23 +494,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
-                    value: selectedOccu,
+                    value: selectedChronic,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedOccu = newValue;
+                        selectedChronic = newValue;
                       });
                     },
                     items:
-                        occupation.map<DropdownMenuItem<String>>((String item) {
+                        chronicIllness.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -497,16 +519,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                 CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Specify your illnesses",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,
@@ -518,15 +540,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+                Text(
                 "Are you on any medications ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+                SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -541,23 +563,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
-                    value: selectedOccu,
+                    value: selectedMedications,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedOccu = newValue;
+                        selectedMedications = newValue;
                       });
                     },
                     items:
-                        occupation.map<DropdownMenuItem<String>>((String item) {
+                        medications.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -566,16 +588,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Type response here",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,
@@ -590,15 +612,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     
                     },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Tobacco use",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -613,12 +635,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -628,7 +650,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         selectedTobacco = newValue;
                       });
                     },
-                    items: yesNo.map<DropdownMenuItem<String>>((String item) {
+                    items: tobacco.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -637,15 +659,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Alcohol consumption",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -660,22 +682,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize:h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
-                    value: selectedTobacco,
+                    value: selectedAlocohol,
                     onChanged: (String? newValue) {
                       setState(() {
-                        selectedTobacco = newValue;
+                        selectedAlocohol = newValue;
                       });
                     },
-                    items: yesNo.map<DropdownMenuItem<String>>((String item) {
+                    items: alcohol.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -684,15 +706,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Are you on any allergies ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -707,12 +729,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -732,16 +754,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Specify your allergy",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,
@@ -753,15 +775,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Any past surgeries or physical injuries ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height:screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -776,12 +798,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -801,16 +823,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Type response here",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,
@@ -822,15 +844,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Any past mental health issues ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -845,12 +867,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -860,7 +882,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         selectedTobacco = newValue;
                       });
                     },
-                    items: yesNo.map<DropdownMenuItem<String>>((String item) {
+                    items: tobacco.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -869,23 +891,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Any dietary restrictions ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Type response here",
-                  hintFontSize: 16,
+                  hintFontSize: h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,
@@ -897,15 +919,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                   focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                 ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Pregnancy or Postpartum:?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -920,12 +942,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: DropdownButton<String>(
                     isExpanded: true,
                     underline: const SizedBox(),
-                    hint: const Text(
+                    hint:  Text(
                       "Choose from list",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: h16,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFFACACAF)),
+                          color: const Color(0xFFACACAF)),
                     ),
                     icon: Image.asset('assets/Shape.png'),
                     iconSize: 24,
@@ -935,7 +957,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         selectedTobacco = newValue;
                       });
                     },
-                    items: yesNo.map<DropdownMenuItem<String>>((String item) {
+                    items: tobacco.map<DropdownMenuItem<String>>((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
                         child: Text(item),
@@ -944,23 +966,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: screenHeight * 0.02,
               ),
-              const Text(
+               Text(
                 "Menopause ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: h14, fontWeight: FontWeight.w400),
               ),
-              const SizedBox(
-                height: 8,
+               SizedBox(
+                height: screenHeight * 0.01,
               ),
                CustomTextField(
-                  fontSize: 16,
+                  fontSize: h16,
                   fontWeight: FontWeight.w400,
                   textColor: Colors.black,
                   hintTextColor: const Color(0xFFACACAF),
                   hintText: "Type response here",
-                  hintFontSize: 16,
+                  hintFontSize:h16,
                   hintFontWeight: FontWeight.w400,
                   filled: true,
                   maxLines: 8,

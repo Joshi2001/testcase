@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:testcase/Custom/custombutton.dart';
 import 'package:testcase/Custom/customtextfield.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 import 'package:testcase/view_model/auth_view_model.dart';
 import 'package:testcase/Custom/showtoast.dart';
 import 'package:testcase/view/auth/signup.dart';
@@ -32,6 +33,16 @@ class _LogInState extends State<LogIn> {
  
   @override
   Widget build(BuildContext context) {
+    double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
      final authViewModel = Provider.of<AuthViewModel>(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -41,7 +52,7 @@ class _LogInState extends State<LogIn> {
           children: [
             Container(
                 width: double.infinity,
-                height: 200,
+                height: screenHeight*0.25,
                 decoration: const BoxDecoration(
                   color: Color(0xFF6154D5),
                 ),
@@ -49,67 +60,71 @@ class _LogInState extends State<LogIn> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 50,
+                     SizedBox(
+                      height: screenHeight*0.05,
                     ),
                     Container(
-                      width: 80,
-                      height: 40,
+                      width: screenWidth*0.2,
+                      height: screenHeight*0.05,
                       decoration: const BoxDecoration(color: Colors.white),
-                      child: const Center(
+                      child:  Center(
                         child: Text(
                           'LOGO',
+                          style: TextStyle(
+                              color: const Color(0xFF6154D5),
+                              fontSize: h14,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
+                     SizedBox(
+                      height: screenHeight*0.02,
                     ),
-                    const Text(
+                     Text(
                       'Welcome Back!',
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 25,
+                          fontSize: h24,
                           color: Colors.white),
                     ),
                     const SizedBox(
                       height: 5,
                     ),
-                    const Text(
+                     Text(
                       'Please login to access your account',
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: 14,
+                          fontSize: h14,
                           color: Colors.white),
                     )
                   ],
                 )),
-            const SizedBox(height: 20),
+             SizedBox(height:screenHeight*0.03),
             Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     'Email',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: h16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF0A0816)),
+                        color: const Color(0xFF0A0816)),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   CustomTextField(
                     controller: emailController,
-                    fontSize: 16,
+                    fontSize:h16,
                     maxLines: 1,
                     focusNode: emailFocusNode,
                     fontWeight: FontWeight.w400,
                     textColor: Colors.black,
                     hintTextColor: const Color(0xFFACACAF),
                     hintText: "Enter your email address",
-                    hintFontSize: 16,
+                    hintFontSize: h16,
                     hintFontWeight: FontWeight.w400,
                     filled: true,
                     fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -125,14 +140,14 @@ class _LogInState extends State<LogIn> {
                       FocusScope.of(context).requestFocus(passwordFocusNopde);
                       },
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: screenHeight*0.03,
                   ),
-                  const Text(
+                   Text(
                     'Password',
                     style: TextStyle(
-                        color: Color(0xFF0A0816),
-                        fontSize: 16,
+                        color: const Color(0xFF0A0816),
+                        fontSize: h16,
                         fontWeight: FontWeight.w400),
                   ),
                   const SizedBox(
@@ -140,14 +155,14 @@ class _LogInState extends State<LogIn> {
                   ),
                   CustomTextField(
                     controller: passwordController,
-                    fontSize: 16,
+                    fontSize: h16,
                     maxLines: 1,
                     focusNode: passwordFocusNopde,
                     fontWeight: FontWeight.w400,
                     textColor: Colors.black,
                     hintTextColor: const Color(0xFFACACAF),
                     hintText: "Enter your password",
-                    hintFontSize: 16,
+                    hintFontSize: h16,
                     hintFontWeight: FontWeight.w400,
                     filled: true,
                     fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -163,8 +178,8 @@ class _LogInState extends State<LogIn> {
                       FocusScope.of(context).requestFocus(btnFocusNode);
                     }
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: screenHeight*0.03,
                   ),
                   Row(
                     children: [
@@ -176,30 +191,30 @@ class _LogInState extends State<LogIn> {
                               isRememberMeChecked = newValue ?? false;
                             });
                           }),
-                      const Text(
+                       Text(
                         'Remember Me',
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: Color(0xFF0A0816)),
+                            fontSize: h14,
+                            color: const Color(0xFF0A0816)),
                       ),
                       const Spacer(),
                       GestureDetector(
                         onTap: () {
                           
                         },
-                        child: const Text(
+                        child:  Text(
                           'Forgot Password?',
                           style: TextStyle(
-                              color: Color(0xFF6154D5),
-                              fontSize: 16,
+                              color: const Color(0xFF6154D5),
+                              fontSize: h16,
                               fontWeight: FontWeight.w600),
                         ),
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height:screenHeight*0.03,
                   ),
                   CustomButton(
                       borderColor: null,
@@ -223,33 +238,33 @@ class _LogInState extends State<LogIn> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(15)),
                       padding: 18,
-                      fontSize: 16,
+                      fontSize: h16,
                       fontWeight: FontWeight.w500,
                       focusNode: btnFocusNode,
                      ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child:
                             Divider(color: Color(0xFFE0E0E0), thickness: 1),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
                         'Or login with ',
                         style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFFE0E0E0),
+                            fontSize: h16,
+                            color: const Color(0xFFE0E0E0),
                             fontWeight: FontWeight.w400),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Expanded(
+                      const Expanded(
                           child: Divider(
                         color: Color(0xFFE0E0E0),
                         thickness: 1,
@@ -263,8 +278,8 @@ class _LogInState extends State<LogIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                          width: 77,
-                          height: 61,
+                          width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -282,14 +297,14 @@ class _LogInState extends State<LogIn> {
                                 vertical: 13.0, horizontal: 14.0),
                             child: Image.asset(
                               'assets/ic_google.png',
-                              width: 34,
-                              height: 34,
+                              width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                       const SizedBox(width: 20),
                       Container(
-                          width: 77,
-                          height: 61,
+                            width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -307,14 +322,14 @@ class _LogInState extends State<LogIn> {
                                 horizontal: 15, vertical: 14),
                             child: Image.asset(
                               'assets/ic_facebook.png',
-                              width: 17.65,
-                              height: 33.99,
+                               width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                       const SizedBox(width: 20),
                       Container(
-                          width: 77,
-                          height: 61,
+                           width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -332,14 +347,14 @@ class _LogInState extends State<LogIn> {
                                 vertical: 13.0, horizontal: 14.0),
                             child: Image.asset(
                               'assets/ic_apple.png',
-                              width: 34,
-                              height: 34,
+                               width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 128,
+                   SizedBox(
+                    height: screenHeight*0.1,
                   ),
                   Center(
                     child: GestureDetector(
@@ -348,18 +363,18 @@ class _LogInState extends State<LogIn> {
                             builder: (context) => const SignUpScreen()));
                       },
                       child: RichText(
-                        text: const TextSpan(children: [
+                        text:  TextSpan(children: [
                           TextSpan(
                               text: 'New here? ',
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: h16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400)),
-                          TextSpan(
+                           TextSpan(
                               text: 'Sign Up',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF6154D5),
+                                  fontSize: h16,
+                                  color: const Color(0xFF6154D5),
                                   fontWeight: FontWeight.w600))
                         ]),
                       ),

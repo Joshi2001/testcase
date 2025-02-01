@@ -1,4 +1,7 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 
 class Message {
   bool isUser;
@@ -21,6 +24,16 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
     return Column(
       crossAxisAlignment: isUser == true
           ? CrossAxisAlignment.end
@@ -50,23 +63,23 @@ class Messages extends StatelessWidget {
                     SizedBox(
                       child: Text(
                         message,
-                        style: const TextStyle(
-                            fontSize: 14,
+                        style:  TextStyle(
+                            fontSize: h14,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF0A0816)),
+                            color: const Color(0xFF0A0816)),
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                     SizedBox(height:screenHeight*0.01 ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         time,
                         textAlign: TextAlign.end,
-                        style: const TextStyle(
-                            fontSize: 10,
+                        style:  TextStyle(
+                            fontSize: h10,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF6B678B)),
+                            color: const Color(0xFF6B678B)),
                       ),
                     ),
                   ],
@@ -96,19 +109,19 @@ class Messages extends StatelessWidget {
                   children: [
                     Text(
                       message,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style:  TextStyle(
+                        fontSize: h14,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                     SizedBox(height:screenHeight*0.01 ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         time,
-                        style: const TextStyle(
-                          fontSize: 10,
+                        style:  TextStyle(
+                          fontSize: h10,
                           color: Colors.white,
                           fontWeight: FontWeight.w400,
                         ),

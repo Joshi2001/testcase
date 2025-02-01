@@ -1,9 +1,10 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testcase/Custom/custombutton.dart';
 import 'package:testcase/Custom/customtextfield.dart';
+import 'package:testcase/Custom/mediaQuari.dart';
 import 'package:testcase/view/auth/login.dart';
 import 'package:testcase/Custom/showtoast.dart';
 import 'package:testcase/view_model/auth_view_model.dart';
@@ -23,6 +24,16 @@ final passwordController = TextEditingController();
 
   @override
    Widget build(BuildContext context) {
+    double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
 
     final authViewModel = Provider.of<AuthViewModel>(context);
 
@@ -34,7 +45,7 @@ final passwordController = TextEditingController();
           children: [
             Container(
                 width: double.infinity,
-                height: 200,
+                height: screenHeight*0.25,
                 decoration: const BoxDecoration(
                   color: Color(0xFF6154D5),
                 ),
@@ -42,66 +53,69 @@ final passwordController = TextEditingController();
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 24,
+                     SizedBox(
+                      height: screenHeight*0.05,
                     ),
                     Container(
-                      width: 80,
-                      height: 40,
+                      width: screenWidth*0.2,
+                      height: screenHeight*0.05,
                       decoration: const BoxDecoration(color: Colors.white),
-                      child: const Center(
+                      child:  Center(
                         child: Text(
                           'LOGO',
-                          style: TextStyle(),
+                         style: TextStyle(
+                              color: const Color(0xFF6154D5),
+                              fontSize: h14,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
+                     SizedBox(
+                      height: screenHeight*0.02,
                     ),
-                    const Text(
+                     Text(
                       'Let’s Get Started',
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 25,
+                          fontSize: h24,
                           color: Colors.white),
                     ),
-                    const SizedBox(
-                      height: 5,
+                     SizedBox(
+                      height: screenHeight*0.01,
                     ),
-                    const Text(
+                     Text(
                       'Sign up now and unlock your fitness journey.',
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: 14,
+                          fontSize: h14,
                           color: Colors.white),
                     )
                   ],
                 )),
-            const SizedBox(height: 20),
+            SizedBox(height:screenHeight*0.03),
             Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   Text(
                     'Full Name',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: h16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF0A0816)),
+                        color: const Color(0xFF0A0816)),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   CustomTextField(
                     controller:fullNameController ,
-                    fontSize: 16,
+                    fontSize: h16,
                     fontWeight: FontWeight.w400,
                     textColor: Colors.black,
                     hintTextColor: const Color(0xFFACACAF),
                     hintText: "Enter your full name",
-                    hintFontSize: 16,
+                    hintFontSize: h16,
                     hintFontWeight: FontWeight.w400,
                     filled: true,
                     fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -112,27 +126,27 @@ final passwordController = TextEditingController();
                     focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                     focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: screenHeight*0.03,
                   ),
-                  const Text(
+                   Text(
                     'Email',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: h16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF0A0816)),
+                        color: const Color(0xFF0A0816)),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                    CustomTextField(
                     controller: emailController,
-                    fontSize: 16,
+                    fontSize: h16,
                     fontWeight: FontWeight.w400,
                     textColor: Colors.black,
                     hintTextColor: const Color(0xFFACACAF),
                     hintText: "Enter your email address",
-                    hintFontSize: 16,
+                    hintFontSize: h16,
                     hintFontWeight: FontWeight.w400,
                     filled: true,
                     fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -143,14 +157,14 @@ final passwordController = TextEditingController();
                     focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                     focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                   height: screenHeight*0.03,
                   ),
-                  const Text(
+                   Text(
                     'Password',
                     style: TextStyle(
-                        color: Color(0xFF0A0816),
-                        fontSize: 16,
+                        color: const Color(0xFF0A0816),
+                        fontSize: h16,
                         fontWeight: FontWeight.w400),
                   ),
                   const SizedBox(
@@ -158,12 +172,12 @@ final passwordController = TextEditingController();
                   ),
                    CustomTextField(
                       controller: passwordController,
-                    fontSize: 16,
+                    fontSize: h16,
                     fontWeight: FontWeight.w400,
                     textColor: Colors.black,
                     hintTextColor: const Color(0xFFACACAF),
                     hintText: "Enter your password",
-                    hintFontSize: 16,
+                    hintFontSize: h16,
                     hintFontWeight: FontWeight.w400,
                     filled: true,
                     fillColor: const Color.fromARGB(255, 255, 254, 254),
@@ -174,43 +188,43 @@ final passwordController = TextEditingController();
                     focusedBorderRadius: const BorderRadius.all(Radius.circular(8)),
                     focusedBorderWidth: 1, onFieldSubmitted: (value) {  },
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                      height: screenHeight*0.03,
                   ),
                   RichText(
-                      text: const TextSpan(children: [
+                      text:  TextSpan(children: [
                         TextSpan(
                             text: 'By continuing, you agree to our',
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: h12,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400)),
-                        TextSpan(
+                         TextSpan(
                             text: ' Terms of Service',
                             style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF6154D5),
+                                fontSize: h12,
+                                color: const Color(0xFF6154D5),
                                 fontWeight: FontWeight.w400)),
-                                 TextSpan(
+                                  TextSpan(
                             text: ' and ',
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: h12,
                                 color:  Colors.black,
                                 fontWeight: FontWeight.w400)),
-                                 TextSpan(
+                                  TextSpan(
                             text: 'Privacy Policy.',
                             style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF6154D5),
+                                fontSize: h12,
+                                color: const Color(0xFF6154D5),
                                 fontWeight: FontWeight.w400)),
                       ]),
                     ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                    height: screenHeight*0.03,
                   ),
                   CustomButton(
                       width: double.infinity,
-                      text: "Sign Up",
+                      text: "Sign Up" ,
                       onCall: () {
                         String ? errorMessage = validate();
                         if(errorMessage != null){
@@ -228,45 +242,45 @@ final passwordController = TextEditingController();
                       textColor: Colors.white,
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       padding: 18,
-                      fontSize: 16,
+                      fontSize: h16,
                       fontWeight: FontWeight.w500),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                      height: screenHeight*0.03,
                   ),
-                  const Row(
+                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Divider(color: Color(0xFFE0E0E0), thickness: 1),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
                         'Or Sign Up With ',
                         style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFFE0E0E0),
+                            fontSize: h16,
+                            color: const Color(0xFFE0E0E0),
                             fontWeight: FontWeight.w400),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Expanded(
+                      const Expanded(
                           child: Divider(
                         color: Color(0xFFE0E0E0),
                         thickness: 1,
                       )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                      height: screenHeight*0.03,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                          width:77,
-                          height: 61,
+                         width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -283,14 +297,14 @@ final passwordController = TextEditingController();
                                 vertical: 13.0, horizontal: 14.0),
                             child: Image.asset(
                               'assets/ic_google.png',
-                              width: 34,
-                              height: 34,
+                              width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                       const SizedBox(width: 20),
                       Container(
-                          width:77,
-                          height: 61,
+                          width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -307,14 +321,14 @@ final passwordController = TextEditingController();
                                 horizontal: 15, vertical: 14),
                             child: Image.asset(
                               'assets/ic_facebook.png',
-                              width: 17.65,
-                              height: 33.99,
+                               width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                       const SizedBox(width: 20),
                       Container(
-                          width:77,
-                          height: 61,
+                          width: screenWidth*0.2,
+                          height: screenHeight*0.065,
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
@@ -331,14 +345,14 @@ final passwordController = TextEditingController();
                                 vertical: 13.0, horizontal: 14.0),
                             child: Image.asset(
                               'assets/ic_apple.png',
-                              width: 34,
-                              height: 34,
+                               width: screenWidth*0.1,
+                              height: screenHeight*0.05,
                             ),
                           )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                   SizedBox(
+                     height: screenHeight*0.05,
                   ),
                   Center(
                     child: GestureDetector(
@@ -346,18 +360,18 @@ final passwordController = TextEditingController();
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const LogIn()));
                       },
                       child: RichText(
-                        text: const TextSpan(children: [
+                        text:  TextSpan(children: [
                           TextSpan(
                               text: 'Already Have An Account?',
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: h16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400)),
                           TextSpan(
                               text: ' Login',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF6154D5),
+                                  fontSize: h16,
+                                  color: const Color(0xFF6154D5),
                                   fontWeight: FontWeight.w600))
                         ]),
                       ),

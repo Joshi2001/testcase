@@ -37,26 +37,41 @@ void _clearChat() {
     });
 
     final model = GenerativeModel(model: "gemini-pro", apiKey: apiKey);
-    const msg = "Hello";
     final content = Content.text(userMsg);
     final response = await model.generateContent([content]);
+
     setState(() {
       _message.add(Message(
         isUser: false,
         message: response.text ?? "",
         time: DateTime.now(),
       ));
+      _messageController.clear();
+
     });
-     _messageController.clear();
+   
     if (kDebugMode) {
       print(response.text);
     }
   }
+   @override
+  void dispose() {
+   _messageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = Mediaquari.getScreenWidth(context);
-    double screenHeight = Mediaquari.getScreenHeight(context);
+    double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenHeight = Mediaquery.getScreenHeight(context);
+    double h10 = Mediaquery.getFontSize10(context);
+    double h12 = Mediaquery.getFontSize12(context);
+    double h14 = Mediaquery.getFontSize14(context);
+    double h16 = Mediaquery.getFontSize16(context);
+    double h18 = Mediaquery.getFontSize18(context);
+    double h20 = Mediaquery.getFontSize20(context);
+    double h22 = Mediaquery.getFontSize22(context);
+    double h24 = Mediaquery.getFontSize24(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -65,21 +80,19 @@ void _clearChat() {
         shape: Border(
           bottom: BorderSide(
             color: Colors.black.withOpacity(0.1),
-            width: 1.0,
+            width: screenWidth*0.002,
           ),
         ),
         title: Row(
           children: [
-            SizedBox(width: screenWidth * 0.01),
+             SizedBox(width: screenWidth * 0.01),
             Image.asset(
               'assets/img_avtar.png',
-              height: screenWidth * 0.1,
-              width: screenWidth * 0.1,
             ),
-            SizedBox(width: screenWidth * 0.04),
-            const Text(
+            SizedBox(width: screenWidth * 0.02),
+             Text(
               'Fit Bot',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: h18, fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -87,7 +100,7 @@ void _clearChat() {
           Padding(
             padding: const EdgeInsets.only(right: 24.0),
             child: GestureDetector(onTap: ()async {
-              final result =  await showDialog(context: context, builder: (context)=>const DialogBox(title: "Are you sure you want clear chat",cancelText:"Cancle",okText:" clear chat",dialogColor: Color(0xFF272256),cancelButtonColor: Colors.white,logoutButtonColor: Color(0xFF6154D5),borderRadius: 20,padding: 20));
+              final result =  await showDialog(context: context, builder: (context)=> DialogBox(fontSize:h16 ,title: "Are you sure you want clear chat",cancelText:"Cancle",okText:" clear chat",dialogColor: const Color(0xFF272256),cancelButtonColor: Colors.white,logoutButtonColor: const Color(0xFF6154D5),borderRadius: 20,padding: 20));
                 if (result == true) {
                   _clearChat();
                 }
@@ -117,15 +130,15 @@ void _clearChat() {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top :10.0),
+                    padding: const EdgeInsets.only(top :5.0),
                     child: Container(
                       constraints: const BoxConstraints(
                         minHeight: 48.0,
                         maxHeight: 90.0,
                       ),
                       child: TextField(
-                        style: const TextStyle(
-                            fontSize: 14,
+                        style:  TextStyle(
+                            fontSize: h14,
                             fontWeight: FontWeight.w400,
                             color: Colors.black),
                         controller: _messageController,
@@ -133,9 +146,16 @@ void _clearChat() {
                         keyboardType: TextInputType.multiline,
                         onSubmitted: (text) {
                           talkWithGemine();
+                          if(_messageController.text.isNotEmpty){
+                            _messageController.clear();
+                          }
                         },
                         decoration: InputDecoration(
                           hintText: 'Type your message...',
+                          hintStyle:  TextStyle(
+                              fontSize: h14,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF6B678B)),
                           filled: true,
                           fillColor: const Color(0xFFF5F5F5),
                           border: OutlineInputBorder(
