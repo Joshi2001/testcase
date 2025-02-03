@@ -47,7 +47,6 @@ void _clearChat() {
         time: DateTime.now(),
       ));
       _messageController.clear();
-
     });
    
     if (kDebugMode) {
