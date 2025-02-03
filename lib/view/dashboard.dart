@@ -47,6 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     double h40 = Mediaquery.getFontSize40(context);
     double h42 = Mediaquery.getFontSize42(context);
     double h44 = Mediaquery.getFontSize44(context);
+
     return Scaffold(
       backgroundColor: const Color(0xFFFDFDFF),
       appBar: AppBar(
@@ -181,7 +182,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       Container(
                         width: screenWidth * 0.40,
-                        height: screenHeight * 0.2,
+                        height: screenHeight * 0.21,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -224,7 +225,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         children: [
                           Container(
                             width: screenWidth * 0.40,
-                            height: screenHeight * 0.2,
+                            height: screenHeight * 0.21,
                             decoration: const BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -254,7 +255,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                        SizedBox(
                                         width: screenWidth * 0.01,
                                       ),
-                                      Image.asset("assets/ic_food.png",height: screenHeight*0.05,width: screenWidth*0.1,)
+                                      Image.asset("assets/ic_food.png",)
                                     ],
                                   ),
                                 ),
@@ -503,9 +504,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                    SizedBox(
-                                    width: screenWidth * 0.1,
+                                    width: screenWidth * 0.034,
                                   ),
-                                  Image.asset("assets/ic_weight.png")
+                                  Image.asset("assets/ic_weight.png",)
                                 ],
                               ),
                             ),
@@ -565,7 +566,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                    SizedBox(
-                                    width: screenWidth * 0.1,
+                                    width: screenWidth * 0.034,
                                   ),
                                   Image.asset("assets/ic_line.png")
                                 ],
@@ -599,7 +600,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                       Container(
                          width: screenWidth * 0.40,
-                        height: screenHeight * 0.25,
+                        height: screenHeight * 0.27,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -620,7 +621,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  
                                    Text(
                                     "Sleep Cycle",
                                     style: TextStyle(
@@ -628,33 +628,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                     SizedBox(
-                                      width: screenWidth * 0.032,
+                                      width: screenWidth * 0.01,
                                     ),  
                                   Image.asset("assets/ic_moon.png")
                                 ],
                               ),
                             ),
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 24.0, bottom: 25.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      "assets/ic_earlygroup.png",
-                                      width: screenWidth * 0.2,
-                                      height: screenHeight * 0.1,
-                                    ),
-                                      SizedBox(height: screenHeight * 0.01),
-                                     Text(
-                                      "Early Riser",
-                                      style: TextStyle(
-                                          color: const Color(0xFF6B678B),
-                                          fontSize: h18,
-                                          fontWeight: FontWeight.w600),
-                                    )
-                                  ],
-                                )),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/ic_earlygroup.png",
+                                  width: screenWidth * 0.2,
+                                  height: screenHeight * 0.1,
+                                ),
+                                  SizedBox(height: screenHeight * 0.01),
+                                 Text(
+                                  "Early Riser",
+                                  style: TextStyle(
+                                      color: const Color(0xFF6B678B),
+                                      fontSize: h18,
+                                      fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),

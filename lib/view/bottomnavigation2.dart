@@ -40,8 +40,9 @@ class _Bottomnavigation2State extends State<Bottomnavigation2> {
     double h22 = Mediaquery.getFontSize22(context);
     double h24 = Mediaquery.getFontSize24(context);
     double h26 = Mediaquery.getFontSize26(context);
-      double IW24 = Mediaquery.getImageSizeW24(context);
+    double IW24 = Mediaquery.getImageSizeW24(context);
     double IH24 = Mediaquery.getImageSizeH24(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: screenList[currentIndexValue],
@@ -50,22 +51,22 @@ class _Bottomnavigation2State extends State<Bottomnavigation2> {
         child: Container(
           height: screenHeight * 0.06,
           decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Color(0xFF272256),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: Color(0xFF272256),
           ),
           child: GNav(
             rippleColor: Colors.grey,
             hoverColor: Colors.grey,
             tabBorderRadius: 49,
-            tabActiveBorder: Border.all(color: Colors.white, width: 1),
+            tabActiveBorder: Border.all(color: Colors.white, width: screenWidth * 0.0001 ),
             curve: Curves.easeOutExpo,
             duration: const Duration(milliseconds: 100),
-            gap: 8,
+            gap: screenWidth * 0.01,
             color: Colors.white,
             activeColor: const Color(0xFF6154D5),
-            iconSize: IW24,
+            iconSize: h24,
             tabBackgroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 4),
             
             tabs: [
                GButton(
@@ -80,7 +81,7 @@ class _Bottomnavigation2State extends State<Bottomnavigation2> {
                 icon: LineIcons.envelope,
                 text: 'Chat',
                 textStyle: TextStyle(
-                  fontSize: h16, 
+                  fontSize: h14, 
                    color: const Color(0xFF6154D5), 
                 ),
               ),
@@ -88,14 +89,14 @@ class _Bottomnavigation2State extends State<Bottomnavigation2> {
                 icon: LineIcons.user,
                 text: 'Profile',
                 textStyle: TextStyle(
-                  fontSize: h16, 
+                  fontSize: h14, 
                   color: const Color(0xFF6154D5), 
                 ),
               ),
               GButton(
                 icon: LineIcons.bell,
                 textStyle: TextStyle(
-                  fontSize: h16, 
+                  fontSize: h14, 
                   color: const Color(0xFF6154D5), 
                 ),
                 text: 'Notification',
