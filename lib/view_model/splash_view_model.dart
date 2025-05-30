@@ -18,8 +18,8 @@ class SplashViewModel  {
       if(kDebugMode){
         print("Error1 :  ${value.token}");
       }
-       await Future.delayed(const Duration(seconds: 3));
-         Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const LogIn())) ;  
+      await Future.delayed(const Duration(seconds: 3));
+       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const LogIn())) ;  
       }else {
          if(kDebugMode){
         print("Error2 :  ${value.token}");

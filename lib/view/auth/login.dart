@@ -19,7 +19,6 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
 
- 
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -29,8 +28,6 @@ class _LogInState extends State<LogIn> {
   FocusNode passwordFocusNopde = FocusNode();
   FocusNode  btnFocusNode = FocusNode(); 
 
-
- 
   @override
   Widget build(BuildContext context) {
     double screenWidth = Mediaquery.getScreenWidth(context);
@@ -112,8 +109,8 @@ class _LogInState extends State<LogIn> {
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF0A0816)),
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: screenHeight*0.01,
                   ),
                   CustomTextField(
                     controller: emailController,

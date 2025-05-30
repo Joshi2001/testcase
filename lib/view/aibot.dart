@@ -78,6 +78,7 @@ void _clearChat() {
         backgroundColor: Colors.white,
         shape: Border(
           bottom: BorderSide(
+            // ignore: deprecated_member_use
             color: Colors.black.withOpacity(0.1),
             width: screenWidth*0.002,
           ),

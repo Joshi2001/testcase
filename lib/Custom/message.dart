@@ -24,7 +24,7 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     double screenWidth = Mediaquery.getScreenWidth(context);
+    double screenWidth = Mediaquery.getScreenWidth(context);
     double screenHeight = Mediaquery.getScreenHeight(context);
     double h10 = Mediaquery.getFontSize10(context);
     double h12 = Mediaquery.getFontSize12(context);
@@ -35,9 +35,8 @@ class Messages extends StatelessWidget {
     double h22 = Mediaquery.getFontSize22(context);
     double h24 = Mediaquery.getFontSize24(context);
     return Column(
-      crossAxisAlignment: isUser == true
-          ? CrossAxisAlignment.end
-          : CrossAxisAlignment.start,
+      crossAxisAlignment:
+          isUser == true ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         if (isUser == false)
           Padding(
@@ -63,20 +62,20 @@ class Messages extends StatelessWidget {
                     SizedBox(
                       child: Text(
                         message,
-                        style:  TextStyle(
+                        style: TextStyle(
                             fontSize: h14,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF0A0816)),
                         textAlign: TextAlign.start,
                       ),
                     ),
-                     SizedBox(height:screenHeight*0.01 ),
+                    SizedBox(height: screenHeight * 0.01),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         time,
                         textAlign: TextAlign.end,
-                        style:  TextStyle(
+                        style: TextStyle(
                             fontSize: h10,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF6B678B)),
@@ -89,7 +88,7 @@ class Messages extends StatelessWidget {
           ),
         if (isUser == true)
           Padding(
-            padding: const EdgeInsets.only(top : 7.5,bottom: 7.5,right: 5.0),
+            padding: const EdgeInsets.only(top: 7.5, bottom: 7.5, right: 5.0),
             child: Container(
               constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.6,
@@ -109,18 +108,18 @@ class Messages extends StatelessWidget {
                   children: [
                     Text(
                       message,
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontSize: h14,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
                       ),
                     ),
-                     SizedBox(height:screenHeight*0.01 ),
+                    SizedBox(height: screenHeight * 0.01),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         time,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: h10,
                           color: Colors.white,
                           fontWeight: FontWeight.w400,

@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget {
     this.focusedBorderColor,
     this.focusedBorderWidth,
     this.focusNode, required Null Function(dynamic value) onFieldSubmitted,
-    // required Null Function(dynamic value) onFieldSubmitted,
+    
   });
 
   @override
